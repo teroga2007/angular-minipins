@@ -1,0 +1,10 @@
+<div class="flex flex-col items-center justify-center h-[80vh] text-center px-4">
+  <div class="text-6xl text-red-500">
+    🚫
+  </div>
+  <h1 class="text-3xl font-bold mt-4 text-error">Rate limit reached!</h1>
+  <p class="mt-2 text-gray-500 max-w-md">
+    You have reached the rate limit for the Unsplash API. Please try again later.
+  </p>
+  <button class="btn btn-error btn-sm mt-4" (click)="reloadPage()">Retry</button>
+</div>

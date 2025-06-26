@@ -1,0 +1,38 @@
+<div class="px-8 py-6 min-h-screen">
+  <h1 class="text-3xl font-bold mb-6">Your Favorite Pins</h1>
+
+  <div *ngIf="(favorites$ | async) as favorites; else noFavorites"
+    class="grid gap-6 justify-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+    <div class="card flex flex-row bg-base-200 shadow-md overflow-hidden h-[200px]" *ngFor="let card of favorites">
+
+      <div class="relative w-2/3 h-full">
+        <card [image]=" card" (toggleFavoriteEvent)="showToast" class="h-full w-full object-cover" />
+      </div>
+
+      <!-- Notes -->
+      <div class="w-1/3 bg-base-300 p-3 flex flex-col items-start justify-start overflow-hidden editable-card-body"
+        (click)="editNote(card)">
+
+        <ng-container *ngIf="editingCard?.id === card.id; else showNote">
+          <textarea #editingTextarea [(ngModel)]="editedNote"
+            class="textarea textarea-bordered w-full mb-2 h-full resize-none"></textarea>
+        </ng-container>
+
+        <ng-template #showNote>
+          <p class="text-sm break-words overflow-auto"
+            [innerHTML]="card.notes || 'Click to add or edit a note' | newline"></p>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #noFavorites>
+  <div class="text-center text-gray-400 min-h-screen">
+    No favorites yet. Please add some from the <a class="underline hover:cursor-pointer"
+      [routerLink]="'/'">homepage</a>.
+  </div>
+</ng-template>

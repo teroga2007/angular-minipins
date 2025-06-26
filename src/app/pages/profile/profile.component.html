@@ -1,0 +1,62 @@
+<div class="min-h-screen place-items-center card shrink-0 shadow-2xl">
+  <h1 class="text-3xl font-bold mb-6">Profile</h1>
+
+  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-full max-w-md p-4 space-y-4">
+
+    <!-- Profile Photo -->
+    <div class="flex flex-col items-center mb-4">
+      <div class="w-32 h-32 hover:cursor-pointer">
+        <img (click)="onPhotoSelected()"
+          src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="Profile Photo"
+          class="rounded-full w-32 h-32 object-cover border shadow-md" />
+      </div>
+    </div>
+
+    <!-- Name -->
+    <div (click)="editingField = 'name'" class="cursor-pointer group">
+      <label class="label text-sm text-base-content/70">Nombre</label>
+      <ng-container *ngIf="editingField === 'name'; else nameView">
+        <input [(ngModel)]="user.name" (blur)="editingField = ''; saveProfile()" type="text"
+          class="input input-bordered w-full" placeholder="Tu nombre" autofocus />
+      </ng-container>
+      <ng-template #nameView>
+        <div class="flex items-center justify-between">
+          <p class="transition group-hover:underline text-base-content/90">
+            {{ user.name || 'Click to edit' }}
+          </p>
+          <i class="bi bi-pencil hidden group-hover:inline"></i>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Username (readonly) -->
+    <div>
+      <label class="label text-sm text-base-content/70">Username</label>
+      <input type="text" aria-label="username" class="input input-bordered w-full bg-base-300 text-base-content/60"
+        value="admin" disabled />
+    </div>
+
+    <!-- Bio -->
+    <div (click)="editingField = 'bio'" class="cursor-pointer group">
+      <label class="label text-sm text-base-content/70">Bio</label>
+      <ng-container *ngIf="editingField === 'bio'; else bioView">
+        <textarea [(ngModel)]="user.bio" (blur)="editingField = ''; saveProfile()" rows="3"
+          class="textarea textarea-bordered w-full" placeholder="Tu biografía" autofocus></textarea>
+      </ng-container>
+      <ng-template #bioView>
+        <div class="flex items-center justify-between">
+          <p class="transition group-hover:underline text-base-content/90 whitespace-pre-line">
+            {{ user.bio || 'Haz clic para añadir una biografía' }}
+          </p>
+          <i class="bi bi-pencil hidden group-hover:inline"></i>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Logout -->
+    <button class="btn btn-error mt-6 w-full" (click)="logout()">
+      Log out
+    </button>
+  </fieldset>
+
+</div>

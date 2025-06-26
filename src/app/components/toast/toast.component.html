@@ -1,0 +1,9 @@
+<div class="toast toast-bottom toast-end z-50 flex flex-col gap-2">
+  <div *ngFor="let toast of toasts" class="alert" [ngClass]="{
+      'alert-success': toast.type === 'success',
+      'alert-error': toast.type === 'error',
+      'alert-info': toast.type === 'info'
+    }">
+    <span>{{ toast.message }}</span>
+  </div>
+</div>

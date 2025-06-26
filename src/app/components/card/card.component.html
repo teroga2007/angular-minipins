@@ -1,0 +1,28 @@
+<div class="aspect-[3/4] w-full h-full overflow-hidden relative group" (click)="navigateToImageDetail(image)">
+  <img src="{{image.urls.small}}" alt="{{image.alt}}"
+    class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-125 hover:cursor-pointer" />
+  <div class="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">
+    ❤️ {{ image.noOfLikes }}
+  </div>
+
+  <button *ngIf="router.url.includes('/fav')"
+    class="absolute bottom-3 right-15 z-10 text-white transition-opacity duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 bg-black/40 hover:bg-black/60 rounded-full p-2 hover:cursor-pointer"
+    (click)="share(image)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
+    </svg>
+  </button>
+
+  <button (click)="toggleFavorite($event)"
+    class="absolute bottom-3 right-3 z-10 text-white transition-opacity duration-300
+opacity-100 md:opacity-0 md:group-hover:opacity-100 bg-black/40 hover:bg-black/60 rounded-full p-2 hover:cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" [attr.fill]="(isFavorite$ | async) ? 'currentColor' : 'none'"
+      viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 
+4.5 0 1 1 6.364 6.364L12 21.364 4.318 13.682a4.5
+4.5 0 0 1 0-6.364z" />
+    </svg>
+  </button>
+</div>

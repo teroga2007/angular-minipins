@@ -1,59 +1,92 @@
-# Minipins
+# 📸 Minipins
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+**Minipins** is a photo browsing app where you can explore, search, and save images of any kind. It allows you to add favorite images, share them on social networks, and write personal notes or thoughts on saved images.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Features
 
-```bash
-ng serve
-```
+- 🔍 **Search photos**: Search any topic using the [Unsplash](https://unsplash.com/developers) API.
+- ⭐ **Favorites**: Save images to your favorites, with persistent state using `localStorage` and `NgRx Store`.
+- ✍️ **Notes**: Write notes and thoughts on your saved images.
+- 📤 **Share**: Share images easily on social media.
+- 👤 **Profile**: Edit your name, photo, and bio from the profile page.
+- 🔐 **Mock login**: Managed entirely with `localStorage`.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🧪 Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- ⚙️ **Angular** (using `standalone components`)
+- 🗂️ **NgRx Store** (for managing favorites)
+- 💾 **localStorage** (for session, favorites, and profile persistence)
+- 🎨 **Tailwind CSS** + [**DaisyUI**](https://daisyui.com/) (with `sunset` theme)
+- 🖼️ **Unsplash API** (image search)
+- 🧭 **Angular Routing** with **guards** and **lazy loading**
+- 🔠 **Bootstrap Icons**
+- 🖱️ **Infinite Scroll** (lazy loading for image list)
+- 📱 **Responsive design**
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🗂️ Project Structure
 
 ```bash
-ng test
+src/
+├── app/                  # Root module
+├── pages/                # Main views (home, login, detail, profile, etc.)
+├── components/           # Reusable components (navbar, toast, cards, etc.)
+├── services/             # API services, favorites, auth, toast, etc.
+├── models/               # Interfaces and types
+├── store/                # Redux store, reducers, actions, selectors
+├── utils/                # Utility functions
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🚀 Getting Started
 
-```bash
-ng e2e
-```
+1. Clone the repository:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+   ```bash
+   git clone https://github.com/yourusername/minipins.git
+   cd minipins
+   ```
 
-## Additional Resources
+2. Install dependencies:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   npm install
+   ```
+
+3. Run the app:
+
+   ```bash
+   ng serve
+   ```
+
+4. Open in your browser:
+
+   ```
+   http://localhost:4200
+   ```
+
+---
+
+## 📸 Credits
+
+- Photos: [Unsplash](https://unsplash.com/)
+- Icons: [Bootstrap Icons](https://icons.getbootstrap.com/)
+- Styling: [TailwindCSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/)
+
+---
+
+## 🧑‍💻 Author
+
+Stephanie Robles G - [sterogam@gmail.com](mailto:sterogam@gmail.com)
+
+Built as a learning project to apply advanced Angular concepts, global state management, local data persistence, and modern UI.
+
+---
+
+Explore, save, and express yourself with **Minipins**! 🌄✨

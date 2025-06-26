@@ -1,0 +1,36 @@
+<div class="navbar bg-base-300 shadow-sm">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl" [routerLink]="'/'">Minipins</a>
+  </div>
+  <div class="flex gap-2">
+    <input *ngIf="router.url === '/'" (input)="onSearch($event)" type="text" aria-label="Search" placeholder="Search"
+      class="input input-bordered w-24 md:w-auto" />
+    <div>
+      <button [ngClass]="{ 'text-primary': router.url === '/favorites' }" [routerLink]="'favorites'" title="Favorites"
+        class="btn btn-ghost hover:cursor-pointer hover:text-primary transition duration-300 ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 
+        4.5 0 1 1 6.364 6.364L12 21.364 4.318 13.682a4.5
+        4.5 0 0 1 0-6.364z" />
+        </svg>
+        My Favorites
+      </button>
+    </div>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img alt="Profile photo" [src]="profilePhotoSrc" />
+        </div>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <a [routerLink]="'profile'" class="justify-between">
+            Profile
+          </a>
+        </li>
+        <li><a (click)="logOut()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

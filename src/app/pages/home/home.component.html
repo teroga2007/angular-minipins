@@ -1,0 +1,28 @@
+<error-rate-limit *ngIf="hasRateLimitError" />
+<error-not-found *ngIf="hasNotFoundError" />
+
+
+<div *ngIf="cards.length > 0"
+  class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
+  @for (card of cards; track card.id) {
+  <card [image]="card" (toggleFavoriteEvent)="onToggleFavorite($event)" />
+  }
+</div>
+
+<!-- Anchor element for scroll trigger -->
+<div #scrollAnchor class="h-4"></div>
+
+<!-- loading spinner -->
+<div *ngIf="loading && !hasRateLimitError && !hasNotFoundError" class="text-center py-4">
+  <span title="Loading" aria-label="Loading" class="loading loading-ring loading-xl"></span>
+</div>
+
+<!-- No more results -->
+<div *ngIf="noMoreResults && !hasRateLimitError && !hasNotFoundError"
+  class=" min-h-screen m-auto text-center flex flex-col align-middle justify-center py-4 text-gray-300">
+  <p class="text-2xl mb-2">🎉 ¡That's all for now!</p>
+  <p class="text-sm">You've reached the end of the collection</p>
+</div>
+
+<!-- Toast -->
+<toast [toasts]="toasts" />
