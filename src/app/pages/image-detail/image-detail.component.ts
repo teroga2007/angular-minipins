@@ -16,7 +16,7 @@ import { Store } from '@ngrx/store';
 })
 export class ImageDetailComponent implements OnInit {
   imageId: string = '';
-  image!: Card;
+  image!: Card | null;
   toast: ToastData[] = [];
   isFavorite: boolean = false;
   notes: string | null = '';
@@ -75,6 +75,7 @@ export class ImageDetailComponent implements OnInit {
   onToggleFavorite(event: Event) {
     event.stopPropagation();
 
+    if (this.image === null) return;
     this.favoritesService.toggleFavorite(this.image).then((wasAdded) => {
       if (wasAdded) {
         this.toastService.showToast('Added to favorites', 'success');
